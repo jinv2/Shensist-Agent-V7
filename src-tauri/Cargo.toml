@@ -1,0 +1,34 @@
+[package]
+name = "shensist-zeroclaw"
+version = "0.1.0"
+description = "神思智能体 V7 - 四十年文化底蕴的财务智能体"
+authors = ["Shensist Team"]
+edition = "2021"
+
+[lib]
+name = "shensist_zeroclaw_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "shensist-zeroclaw"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "^2.0.0", features = [] }
+
+[dependencies]
+tauri = { version = "^2.0.0", features = [] }
+tauri-plugin-shell = "2.0.0"
+tauri-plugin-dialog = "2.0.0"
+tauri-plugin-fs = "2.0.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+calamine = "0.24"
+rust_xlsxwriter = "0.70"
+reqwest = { version = "0.11", features = ["json"] }
+walkdir = "2.4"
+
+[features]
+default = [ "custom-protocol" ]
+custom-protocol = [ "tauri/custom-protocol" ]

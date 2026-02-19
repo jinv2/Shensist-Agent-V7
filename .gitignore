@@ -1,0 +1,13 @@
+*.gguf
+*.bin
+ai_env/
+node_modules/
+target/
+src-tauri/target/
+brain.log
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.xlsx
+!test.xlsx

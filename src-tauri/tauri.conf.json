@@ -1,0 +1,33 @@
+{
+  "productName": "Shensist-ZeroClaw",
+  "version": "0.1.0",
+  "identifier": "com.shensist.zeroclaw",
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "神思智能体 V7 | 四十年文化底蕴·智能财务分析系统",
+        "width": 1000,
+        "height": 700,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png"
+    ]
+  }
+}

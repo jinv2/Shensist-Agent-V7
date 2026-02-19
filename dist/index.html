@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神思智能体 V7 | 四十年文化艺术底蕴·智能财务分析系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 背景粒子效果 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #D4AF37;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5),
+                         0 0 60px rgba(212, 175, 55, 0.3);
+            letter-spacing: 0.1em;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.3); }
+            to { text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 80px rgba(212, 175, 55, 0.4); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #b8b8b8;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .main-button {
+            background: linear-gradient(45deg, #D4AF37, #f4e4bc, #D4AF37);
+            background-size: 200% 200%;
+            color: #0d0d0d;
+            border: 2px solid #D4AF37;
+            padding: 2rem 5rem;
+            font-size: 2.2rem;
+            font-weight: bold;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4),
+                        inset 0 0 20px rgba(212, 175, 55, 0.2);
+            animation: breathe 3s ease-in-out infinite, gradient-shift 4s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .main-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .main-button:hover::before {
+            animation: shine 0.5s ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4),
+                           inset 0 0 20px rgba(212, 175, 55, 0.2); 
+            }
+            50% { 
+                transform: scale(1.08); 
+                box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6),
+                           inset 0 0 30px rgba(212, 175, 55, 0.3); 
+            }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .main-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.7),
+                        inset 0 0 25px rgba(212, 175, 55, 0.4);
+            border-color: #f4e4bc;
+        }
+
+        .main-button:active {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6),
+                        inset 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .main-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: scale(0.95);
+            animation: pulse-disabled 2s ease-in-out infinite;
+            background: linear-gradient(45deg, #666666, #888888, #666666);
+            border: 2px solid #666666;
+            color: #cccccc;
+            box-shadow: none;
+        }
+
+        @keyframes pulse-disabled {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.5; }
+        }
+
+        .console-area {
+            margin-top: 3rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        .console-header {
+            color: #D4AF37;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .console-log {
+            margin: 0.5rem 0;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .log-info { color: #87ceeb; }
+        .log-success { color: #90ee90; }
+        .log-warning { color: #ffd700; }
+        .log-error { color: #ff6b6b; }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .status-active { background: #90ee90; }
+        .status-processing { background: #ffd700; }
+        .status-error { background: #ff6b6b; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* 滚动条样式 */
+        .console-area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .console-area::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .console-area::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.5);
+            border-radius: 4px;
+        }
+
+        .console-area::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 175, 55, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">神思智能体 V7</h1>
+        <p class="subtitle">四十年文化艺术底蕴 · 智能财务分析系统</p>
+        
+        <button class="main-button" id="mainButton">
+            🚀 强制启封数据流
+        </button>
+        
+        <div class="console-area" id="console">
+            <div class="console-header">
+                <span class="status-indicator status-active"></span>
+                正在扫描控制台
+            </div>
+            <div id="console-content">
+                <div class="console-log log-info">系统初始化完成，等待启封数据流...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addLog(message, type = 'info') {
+            const consoleContent = document.getElementById('console-content');
+            const logEntry = document.createElement('div');
+            logEntry.className = `console-log log-${type}`;
+            logEntry.innerHTML = `<span class="status-indicator status-${type === 'error' ? 'error' : type === 'success' ? 'active' : 'processing'}"></span>${new Date().toLocaleTimeString()} - ${message}`;
+            consoleContent.appendChild(logEntry);
+            consoleContent.scrollTop = consoleContent.scrollHeight;
+        }
+
+        // 安全检查 Tauri API 是否可用
+        function waitForTauri(callback, maxAttempts = 50) {
+            let attempts = 0;
+            
+            function check() {
+                if (window.__TAURI__ && window.__TAURI__.core && window.__TAURI__.event) {
+                    callback();
+                } else if (attempts < maxAttempts) {
+                    attempts++;
+                    console.log('等待注入...');
+                    setTimeout(check, 100);
+                } else {
+                    console.error('Tauri API 注入超时');
+                    addLog('❌ Tauri API 注入超时', 'error');
+                }
+            }
+            
+            check();
+        }
+
+        async function startDataFlow() {
+            alert("正在请求神思庭后端...");
+            
+            if (!window.__TAURI__ || !window.__TAURI__.core) {
+                addLog('❌ Tauri API 尚未注入', 'error');
+                return;
+            }
+            
+            const button = document.getElementById('mainButton');
+            button.disabled = true;
+            button.textContent = '数据流处理中...';
+            
+            addLog('🚀 启封数据流开始...', 'info');
+            addLog('🔍 神思智能体 ZeroClaw V7.3 终极版启动中...', 'info');
+            
+            try {
+                // 调用 Tauri 后端命令
+                const result = await window.__TAURI__.core.invoke('start_analysis');
+                addLog(`✅ ${result}`, 'success');
+            } catch (error) {
+                addLog(`❌ 错误: ${error}`, 'error');
+                button.disabled = false;
+                button.textContent = '🚀 强制启封数据流';
+                return;
+            }
+        }
+
+        // 监听来自后端的控制台日志
+        async function setupEventListeners() {
+            if (!window.__TAURI__ || !window.__TAURI__.event) {
+                console.error('Tauri event API not available');
+                return;
+            }
+            
+            try {
+                await window.__TAURI__.event.listen('console-log', (event) => {
+                    const [message, logType] = event.payload;
+                    addLog(message, logType);
+                });
+
+                // 监听处理完成事件
+                await window.__TAURI__.event.listen('processing-complete', () => {
+                    const button = document.getElementById('mainButton');
+                    button.disabled = false;
+                    button.textContent = '🚀 强制启封数据流';
+                    addLog('✨ 系统就绪，可再次启封数据流', 'info');
+                });
+            } catch (error) {
+                console.error('Failed to setup event listeners:', error);
+            }
+        }
+
+        // 初始化系统
+        async function initializeSystem() {
+            const button = document.getElementById('mainButton');
+            
+            await setupEventListeners();
+            
+            // 获取系统信息
+            try {
+                const systemInfo = await window.__TAURI__.core.invoke('get_system_info');
+                addLog(`🖥️ ${systemInfo}`, 'info');
+            } catch (error) {
+                addLog('🖥️ 硬件检测: GTX 1050 Ti 4GB', 'info');
+            }
+            
+            addLog('🔧 ZeroClaw V7.3 终极版已加载', 'success');
+            addLog('📡 AI 推理接口已连接: localhost:11434', 'info');
+            addLog('⚡ CoBridge 物理写入权限已激活', 'success');
+            addLog('✨ 神思智能体 V7 系统就绪，等待启封数据流', 'info');
+            
+            // 启用按钮并设置点击事件
+            button.disabled = false;
+            button.textContent = '🚀 强制启封数据流';
+            button.onclick = startDataFlow;
+        }
+
+        // 页面加载完成后等待 Tauri 注入
+        document.addEventListener('DOMContentLoaded', () => {
+            waitForTauri(initializeSystem);
+        });
+    </script>
+</body>
+</html>

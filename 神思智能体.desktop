@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=神思智能体 V7
+Comment=四十年文化底蕴 · 智能财务分析系统
+Exec=gnome-terminal -- /home/mmm/桌面/Shensist_V7_Release/启动神思.sh
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Utility;Application;
