@@ -28,3 +28,13 @@
 
 ---
 © 2026 [神思庭 Shensist](https://shensist.top). All Rights Reserved.
+
+---
+
+## ⚖️ 版权与许可 (License & Copyright)
+本系统由 **神思庭 (Shensist)** 开发并拥有完整版权。 [cite: 2026-02-18]
+* **个人使用**: 免费开源，仅限学习与技术研究。 [cite: 2026-02-18]
+* **商业用途**: **严禁未经授权的商业行为**。如需商业授权、定制开发或技术咨询，请联系官方 WX：**Shensi-ST**。 [cite: 2026-02-18]
+
+---
+© 2026 [神思庭 Shensist](https://shensist.top). All Rights Reserved.
